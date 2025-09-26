@@ -35,7 +35,7 @@ jobs:
           docker push 787489753653.dkr.ecr.us-east-1.amazonaws.com/my-ecs-app:$IMAGE_TAG
 
       - name: Deploy to Amazon ECS
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ecs-task-def.json
           service: my-ecs-service
