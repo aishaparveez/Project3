@@ -1,0 +1,27 @@
+{
+  "family": "my-ecs-task1",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::787489753653:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::787489753653:role/ecsTaskRole",
+  "containerDefinitions": [
+    {
+      "name": "my-ecs-app",
+      "image": "787489753653.dkr.ecr.us-east-1.amazonaws.com/my-ecs-app:latest",
+      "essential": true,
+      "portMappings": [
+        { "containerPort": 80, "protocol": "tcp" }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/my-ecs-app",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}
